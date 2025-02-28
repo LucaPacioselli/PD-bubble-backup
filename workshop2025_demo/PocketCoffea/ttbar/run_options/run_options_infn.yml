@@ -1,0 +1,3 @@
+sched-url: tcp://localhost:25846
+voms-proxy: /opt/workspace/persistent-storage/proxy
+#chunksize: 1000000
