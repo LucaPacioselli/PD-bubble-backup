@@ -1,0 +1,24 @@
+INFO:    Environment variable SINGULARITYENV_MKL_NUM_THREADS is set, but APPTAINERENV_MKL_NUM_THREADS is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_SCRATCH_DIR_OUTSIDE_CONTAINER is set, but APPTAINERENV__CONDOR_SCRATCH_DIR_OUTSIDE_CONTAINER is preferred
+INFO:    Environment variable SINGULARITYENV_PYTHONHOME is set, but APPTAINERENV_PYTHONHOME is preferred
+INFO:    Environment variable SINGULARITYENV_OMP_NUM_THREADS is set, but APPTAINERENV_OMP_NUM_THREADS is preferred
+INFO:    Environment variable SINGULARITYENV_BATCH_SYSTEM is set, but APPTAINERENV_BATCH_SYSTEM is preferred
+INFO:    Environment variable SINGULARITYENV_TEMP is set, but APPTAINERENV_TEMP is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_JOB_IWD is set, but APPTAINERENV__CONDOR_JOB_IWD is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_SLOT is set, but APPTAINERENV__CONDOR_SLOT is preferred
+INFO:    Environment variable SINGULARITYENV_GOMAXPROCS is set, but APPTAINERENV_GOMAXPROCS is preferred
+INFO:    Environment variable SINGULARITYENV_OMP_THREAD_LIMIT is set, but APPTAINERENV_OMP_THREAD_LIMIT is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_MACHINE_AD is set, but APPTAINERENV__CONDOR_MACHINE_AD is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_BIN is set, but APPTAINERENV__CONDOR_BIN is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_JOB_AD is set, but APPTAINERENV__CONDOR_JOB_AD is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_SCRATCH_DIR is set, but APPTAINERENV__CONDOR_SCRATCH_DIR is preferred
+INFO:    Environment variable SINGULARITYENV_TMP is set, but APPTAINERENV_TMP is preferred
+INFO:    Environment variable SINGULARITYENV__CHIRP_DELAYED_UPDATE_PREFIX is set, but APPTAINERENV__CHIRP_DELAYED_UPDATE_PREFIX is preferred
+INFO:    Environment variable SINGULARITYENV_NUMEXPR_NUM_THREADS is set, but APPTAINERENV_NUMEXPR_NUM_THREADS is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_JOB_PIDS is set, but APPTAINERENV__CONDOR_JOB_PIDS is preferred
+INFO:    Environment variable SINGULARITYENV_TMPDIR is set, but APPTAINERENV_TMPDIR is preferred
+INFO:    Environment variable SINGULARITYENV_CUBACORES is set, but APPTAINERENV_CUBACORES is preferred
+INFO:    Environment variable SINGULARITYENV_PYTHONPATH is set, but APPTAINERENV_PYTHONPATH is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_CHIRP_CONFIG is set, but APPTAINERENV__CONDOR_CHIRP_CONFIG is preferred
+INFO:    Environment variable SINGULARITYENV_JULIA_NUM_THREADS is set, but APPTAINERENV_JULIA_NUM_THREADS is preferred
+/srv//condor_exec.exe: error while loading shared libraries: libpython3.9.so.1.0: cannot open shared object file: No such file or directory

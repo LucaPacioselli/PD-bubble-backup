@@ -1,0 +1,18 @@
+Requirements = HasSingularity
+requestCpus             = 384
+requestMemory           = 1536000        
+requirements            = (SiteName == "T2_PD_BUBBLE_Af20")
+universe                = vanilla
++SingularityImage = "/cvmfs/unpacked.cern.ch/ghcr.io/comp-dev-cms-ita/kernel-root:root-build-1"
++SingularityBind = "/scratch/:/scratch/"
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
++JobFlavour             = "nextweek"
+executable              = /usr/bin/python3
+arguments               = preselection_UL-AF30.py
+environment = "PYTHONHOME=/opt/conda; PYTHONPATH=/opt/conda/lib/python3.12/site-packages:$PYTHONPATH"
+transfer_input_files = chain.txt, chain_gluglu.txt, chain_WZ.txt, preselection_UL.h, preselection_part2_UL.h, preselection_UL-AF30.py
+output                  = 384_out
+error                   = 384_err
+log                     = 384_logs
+queue

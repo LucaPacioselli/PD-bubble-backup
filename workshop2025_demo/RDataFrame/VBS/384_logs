@@ -1,0 +1,34 @@
+000 (34803.000.000) 2025-03-20 15:43:19 Job submitted from host: <131.154.98.185:31618?addrs=131.154.98.185-31618&alias=131.154.98.185.myip.cloud.infn.it&noUDP&sock=schedd_285_1094>
+...
+040 (34803.000.000) 2025-03-20 15:43:37 Started transferring input files
+	Transferring to host: <192.168.60.148:8021?CCBID=131.154.98.185:30618%3faddrs%3d131.154.98.185-30618%26alias%3dccb-pod-5c5dc5f9c-vdtcv%26noUDP%26sock%3dcollector#185&PrivNet=cld-ter-03.cloud.pd.infn.it&addrs=192.168.60.148-8021&alias=cld-ter-03.cloud.pd.infn.it&noUDP&sock=slot1_1_33_005a_17>
+...
+040 (34803.000.000) 2025-03-20 15:43:37 Finished transferring input files
+...
+001 (34803.000.000) 2025-03-20 15:43:38 Job executing on host: <192.168.60.148:8021?CCBID=131.154.98.185:30618%3faddrs%3d131.154.98.185-30618%26alias%3dccb-pod-5c5dc5f9c-vdtcv%26noUDP%26sock%3dcollector#185&PrivNet=cld-ter-03.cloud.pd.infn.it&addrs=192.168.60.148-8021&alias=cld-ter-03.cloud.pd.infn.it&noUDP&sock=startd_30_7856>
+...
+006 (34803.000.000) 2025-03-20 15:43:38 Image size of job updated: 17
+	3  -  MemoryUsage of job (MB)
+	3072  -  ResidentSetSize of job (KB)
+...
+040 (34803.000.000) 2025-03-20 15:43:38 Started transferring output files
+...
+040 (34803.000.000) 2025-03-20 15:43:38 Finished transferring output files
+...
+005 (34803.000.000) 2025-03-20 15:43:39 Job terminated.
+	(1) Normal termination (return value 127)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	2767  -  Run Bytes Sent By Job
+	410173  -  Run Bytes Received By Job
+	2767  -  Total Bytes Sent By Job
+	410173  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :               384       384 
+	   Disk (KB)            :      415      425  13833438 
+	   Memory (MB)          :        3  1536000   1536000 
+
+	Job terminated of its own accord at 2025-03-20T15:43:38Z.
+...
