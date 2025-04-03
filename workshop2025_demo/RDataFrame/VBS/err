@@ -1,0 +1,55 @@
+INFO:    Environment variable SINGULARITYENV_MKL_NUM_THREADS is set, but APPTAINERENV_MKL_NUM_THREADS is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_SCRATCH_DIR_OUTSIDE_CONTAINER is set, but APPTAINERENV__CONDOR_SCRATCH_DIR_OUTSIDE_CONTAINER is preferred
+INFO:    Environment variable SINGULARITYENV_OMP_NUM_THREADS is set, but APPTAINERENV_OMP_NUM_THREADS is preferred
+INFO:    Environment variable SINGULARITYENV_BATCH_SYSTEM is set, but APPTAINERENV_BATCH_SYSTEM is preferred
+INFO:    Environment variable SINGULARITYENV_TEMP is set, but APPTAINERENV_TEMP is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_JOB_IWD is set, but APPTAINERENV__CONDOR_JOB_IWD is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_SLOT is set, but APPTAINERENV__CONDOR_SLOT is preferred
+INFO:    Environment variable SINGULARITYENV_GOMAXPROCS is set, but APPTAINERENV_GOMAXPROCS is preferred
+INFO:    Environment variable SINGULARITYENV_OMP_THREAD_LIMIT is set, but APPTAINERENV_OMP_THREAD_LIMIT is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_MACHINE_AD is set, but APPTAINERENV__CONDOR_MACHINE_AD is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_BIN is set, but APPTAINERENV__CONDOR_BIN is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_JOB_AD is set, but APPTAINERENV__CONDOR_JOB_AD is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_SCRATCH_DIR is set, but APPTAINERENV__CONDOR_SCRATCH_DIR is preferred
+INFO:    Environment variable SINGULARITYENV_TMP is set, but APPTAINERENV_TMP is preferred
+INFO:    Environment variable SINGULARITYENV__CHIRP_DELAYED_UPDATE_PREFIX is set, but APPTAINERENV__CHIRP_DELAYED_UPDATE_PREFIX is preferred
+INFO:    Environment variable SINGULARITYENV_NUMEXPR_NUM_THREADS is set, but APPTAINERENV_NUMEXPR_NUM_THREADS is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_JOB_PIDS is set, but APPTAINERENV__CONDOR_JOB_PIDS is preferred
+INFO:    Environment variable SINGULARITYENV_TMPDIR is set, but APPTAINERENV_TMPDIR is preferred
+INFO:    Environment variable SINGULARITYENV_CUBACORES is set, but APPTAINERENV_CUBACORES is preferred
+INFO:    Environment variable SINGULARITYENV__CONDOR_CHIRP_CONFIG is set, but APPTAINERENV__CONDOR_CHIRP_CONFIG is preferred
+INFO:    Environment variable SINGULARITYENV_JULIA_NUM_THREADS is set, but APPTAINERENV_JULIA_NUM_THREADS is preferred
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Python path configuration:
+  PYTHONHOME = (not set)
+  PYTHONPATH = '/usr/local/lib/root:/usr/local/lib/root:'
+  program name = '/srv//condor_exec.exe'
+  isolated = 0
+  environment = 1
+  user site = 1
+  safe_path = 0
+  import site = 1
+  is in build tree = 0
+  stdlib dir = '/opt/conda/lib/python3.12'
+  sys._base_executable = '/srv/condor_exec.exe'
+  sys.base_prefix = '/opt/conda'
+  sys.base_exec_prefix = '/opt/conda'
+  sys.platlibdir = 'lib'
+  sys.executable = '/srv/condor_exec.exe'
+  sys.prefix = '/opt/conda'
+  sys.exec_prefix = '/opt/conda'
+  sys.path = [
+    '/usr/local/lib/root',
+    '/usr/local/lib/root',
+    '/srv',
+    '/opt/conda/lib/python312.zip',
+    '/opt/conda/lib/python3.12',
+    '/opt/conda/lib/python3.12/lib-dynload',
+  ]
+Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding
+Python runtime state: core initialized
+ModuleNotFoundError: No module named 'encodings'
+
+Current thread 0x00001538edebd740 (most recent call first):
+  <no Python frame>

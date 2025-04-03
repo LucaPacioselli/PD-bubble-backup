@@ -2,10 +2,14 @@ requestCpus             = 1
 requestMemory           = 2000        
 requirements            = (SiteName == "T2_PD_BUBBLE_Af20")
 universe                = vanilla
++SingularityImage = "/cvmfs/unpacked.cern.ch/ghcr.io/comp-dev-cms-ita/kernel-root:root-build-1"
++SingularityBind = "/scratch/:/scratch/"
 should_transfer_files   = YES
 when_to_transfer_output = ON_EXIT
 +JobFlavour             = "nextweek"
-executable              = os_info.sh
+executable              = /opt/conda/bin/python3
+arguments		= treename.py
+transfer_input_files = treename.py
 output                  = out
 error                   = err
 log                     = logs

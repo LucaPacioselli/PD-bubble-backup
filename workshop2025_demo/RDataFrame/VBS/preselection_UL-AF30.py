@@ -337,8 +337,8 @@ def execute_MC(chain, branchlist_, outFilePath = "./preselectionUL.root", outTre
 
     else:
         #df = delayed(RDataFrame)("Events", chain)
-        df = RDataFrame("Events", chain) #to run on all
-        #df = RDataFrame("Events", chain[0])
+        #df = RDataFrame("Events", chain) #to run on all
+        df = RDataFrame("Events", chain[0])
 
     df_year = df.DefinePerSample("Year","GetYear(rdfslot_, rdfsampleinfo_)")
     df_sample = df_year.DefinePerSample("Sample", "GetSample(rdfslot_, rdfsampleinfo_)")
