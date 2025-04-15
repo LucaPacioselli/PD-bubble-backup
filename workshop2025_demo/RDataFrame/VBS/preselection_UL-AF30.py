@@ -5,7 +5,7 @@ import os
 from dask.distributed import Client, PipInstall, WorkerPlugin
 import json
 from samplesUL import *
-import sys 
+import sys
 from dask_jobqueue import HTCondorCluster
 from distributed.diagnostics.plugin import UploadFile
 
@@ -41,11 +41,11 @@ def my_initialization_function():
     jec_prefix_MC = "Summer19UL17_V6_MC"
     jer_prefix_MC = "Summer19UL17_JRV3_MC"
     
-    from urllib import request 
+    from urllib import request
     request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR2017UL.txt", "RoccoR2017UL.txt")
     request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR.cc", "RoccoR.cc")
     request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR.h", "RoccoR.h")
-    request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/btagSF/DeepJet_106XUL17_v3_new.csv", "DeepJet_106XUL17_v3_new.csv") 
+    request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/btagSF/DeepJet_106XUL17_v3_new.csv", "DeepJet_106XUL17_v3_new.csv")
     
     
     ROOT.gInterpreter.Declare(
@@ -57,10 +57,10 @@ def my_initialization_function():
         ''')
 
     request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L1FastJet_AK4PFchs.txt".format(jec_prefix_MC), "{}_L1FastJet_AK4PFchs.txt".format(jec_prefix_MC))
-    request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L2Relative_AK4PFchs.txt".format(jec_prefix_MC), "{}_L2Relative_AK4PFchs.txt".format(jec_prefix_MC)) 
-    request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L3Absolute_AK4PFchs.txt".format(jec_prefix_MC), "{}_L3Absolute_AK4PFchs.txt".format(jec_prefix_MC)) 
-    request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L2L3Residual_AK4PFchs.txt".format(jec_prefix_MC), "{}_L2L3Residual_AK4PFchs.txt".format(jec_prefix_MC)) 
-    request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_UncertaintySources_AK4PFchs.txt".format(jec_prefix_MC), "{}_UncertaintySources_AK4PFchs.txt".format(jec_prefix_MC)) 
+    request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L2Relative_AK4PFchs.txt".format(jec_prefix_MC), "{}_L2Relative_AK4PFchs.txt".format(jec_prefix_MC))
+    request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L3Absolute_AK4PFchs.txt".format(jec_prefix_MC), "{}_L3Absolute_AK4PFchs.txt".format(jec_prefix_MC))
+    request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L2L3Residual_AK4PFchs.txt".format(jec_prefix_MC), "{}_L2L3Residual_AK4PFchs.txt".format(jec_prefix_MC))
+    request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_UncertaintySources_AK4PFchs.txt".format(jec_prefix_MC), "{}_UncertaintySources_AK4PFchs.txt".format(jec_prefix_MC))
     request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_PtResolution_AK4PFchs.txt".format(jer_prefix_MC), "{}_PtResolution_AK4PFchs.txt".format(jer_prefix_MC))
     request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_SF_AK4PFchs.txt".format(jer_prefix_MC), "{}_SF_AK4PFchs.txt".format(jer_prefix_MC))
     
@@ -188,20 +188,20 @@ sampleDict = {'ZZtoLep_UL2016APV': 0,'ZZTo2L2Nu_UL2016APV': 1,'ZZTo4L_UL2016APV'
 
 aggregated_samples_UL2017 = {
     'VG':  [ZG_UL2017, WG_UL2017],
-    'TVX': [TTGJets_UL2017, TTZToQQ_UL2017, TTZToLLNuNu_UL2017, TTWJetsToQQ_UL2017, TTWJetsToLNu_UL2017, tZq_ll_4f_UL2017], 
-    'Triboson': [WWW_4F_UL2017, WWZ_4F_UL2017, WZZ_UL2017, ZZZ_UL2017, WWG_UL2017], 
-    'TTTo2L2Nu': [TTTo2L2Nu_UL2017], 
-    'WZ': [WZ_UL2017], 
+    'TVX': [TTGJets_UL2017, TTZToQQ_UL2017, TTZToLLNuNu_UL2017, TTWJetsToQQ_UL2017, TTWJetsToLNu_UL2017, tZq_ll_4f_UL2017],
+    'Triboson': [WWW_4F_UL2017, WWZ_4F_UL2017, WZZ_UL2017, ZZZ_UL2017, WWG_UL2017],
+    'TTTo2L2Nu': [TTTo2L2Nu_UL2017],
+    'WZ': [WZ_UL2017],
     'DYJetsToLL_FxFx': [DYJetsToLL_M50_FxFx_UL2017],
-    'WrongSign': [WWto2L2Nu_UL2017, GluGluToWWToENEN_UL2017, GluGluToWWToENMN_UL2017, GluGluToWWToENTN_UL2017, GluGluToWWToMNEN_UL2017, GluGluToWWToMNMN_UL2017, GluGluToWWToMNTN_UL2017, GluGluToWWToTNEN_UL2017, 
-                  GluGluToWWToTNMN_UL2017, 
-                  GluGluToWWToTNTN_UL2017, ST_tW_top_UL2017, 
-                  ST_tW_antitop_UL2017, 
-                  GluGluHToWWTo2L2Nu_UL2017, 
+    'WrongSign': [WWto2L2Nu_UL2017, GluGluToWWToENEN_UL2017, GluGluToWWToENMN_UL2017, GluGluToWWToENTN_UL2017, GluGluToWWToMNEN_UL2017, GluGluToWWToMNMN_UL2017, GluGluToWWToMNTN_UL2017, GluGluToWWToTNEN_UL2017,
+                  GluGluToWWToTNMN_UL2017,
+                  GluGluToWWToTNTN_UL2017, ST_tW_top_UL2017,
+                  ST_tW_antitop_UL2017,
+                  GluGluHToWWTo2L2Nu_UL2017,
                   GluGluHToZZTo4L_UL2017, GluGluHToTauTau_UL2017, VBFHToWWTo2L2Nu_UL2017, VBFHToTauTau_UL2017, ttHToNonbb_UL2017, VHToNonbb_UL2017
-    ], 
-    'ZZtoLep': [ZZTo2L2Nu_UL2017, ZZTo4L_UL2017, GluGluToContinToZZTo2e2nu_UL2017, GluGluToContinToZZTo2e2mu_UL2017, GluGluToContinToZZTo2e2tau_UL2017, GluGluToContinToZZTo2mu2nu_UL2017, GluGluToContinToZZTo2mu2tau_UL2017, GluGluToContinToZZTo4e_UL2017, GluGluToContinToZZTo4mu_UL2017, GluGluToContinToZZTo4tau_UL2017], 
-    'VBS_SSWW_SM': [VBS_SSWW_LL_SM_UL2017, VBS_SSWW_TL_SM_UL2017, VBS_SSWW_TT_SM_UL2017], 
+    ],
+    'ZZtoLep': [ZZTo2L2Nu_UL2017, ZZTo4L_UL2017, GluGluToContinToZZTo2e2nu_UL2017, GluGluToContinToZZTo2e2mu_UL2017, GluGluToContinToZZTo2e2tau_UL2017, GluGluToContinToZZTo2mu2nu_UL2017, GluGluToContinToZZTo2mu2tau_UL2017, GluGluToContinToZZTo4e_UL2017, GluGluToContinToZZTo4mu_UL2017, GluGluToContinToZZTo4tau_UL2017],
+    'VBS_SSWW_SM': [VBS_SSWW_LL_SM_UL2017, VBS_SSWW_TL_SM_UL2017, VBS_SSWW_TT_SM_UL2017],
 }
 
 aggregated_samples = aggregated_samples_UL2017
@@ -229,45 +229,45 @@ branchlist = [
     
     "HLT_IsoMu27",
     "HLT_Ele35_WPTight_Gsf",
-    "HLT_Mu50", 
-    "HLT_Ele32_WPTight_Gsf_L1DoubleEG", 
-    "HLT_Photon200", 
-    "HLT_PFHT250", 
+    "HLT_Mu50",
+    "HLT_Ele32_WPTight_Gsf_L1DoubleEG",
+    "HLT_Photon200",
+    "HLT_PFHT250",
     "HLT_PFHT350",
     
     "nJet",
-    "Jet_jetId", 
-    "Jet_eta", 
-    "Jet_pt", 
+    "Jet_jetId",
+    "Jet_eta",
+    "Jet_pt",
     "Jet_puId",
-    "Jet_phi", 
+    "Jet_phi",
     "Jet_mass",
-    "Jet_partonFlavour", 
-    "Jet_btagDeepFlavB", 
-    "Jet_btagSF_deepjet_M_up", 
-    "Jet_btagSF_deepjet_M_down", 
-    "Jet_btagSF_deepjet_M", 
+    "Jet_partonFlavour",
+    "Jet_btagDeepFlavB",
+    "Jet_btagSF_deepjet_M_up",
+    "Jet_btagSF_deepjet_M_down",
+    "Jet_btagSF_deepjet_M",
     "Jet_btagDeepB",
     
     "nElectron",
     "Electron_pt",
-    "Electron_eta", 
+    "Electron_eta",
     "Electron_phi",
     "Electron_mass",
-    "Electron_jetRelIso", 
-    "Electron_mvaFall17V2Iso_WPL", 
+    "Electron_jetRelIso",
+    "Electron_mvaFall17V2Iso_WPL",
     "Electron_mvaFall17V2Iso_WP90",
     "Electron_pdgId",
     "Electron_genPartFlav",
     "Electron_charge",
     
     "nMuon",
-    "Muon_corrected_pt", 
-    "Muon_eta", 
+    "Muon_corrected_pt",
+    "Muon_eta",
     "Muon_phi",
     "Muon_mass",
-    "Muon_tightId", 
-    "Muon_looseId", 
+    "Muon_tightId",
+    "Muon_looseId",
     "Muon_pfRelIso04_all",
     "Muon_pdgId",
     "Muon_genPartFlav",
@@ -275,11 +275,11 @@ branchlist = [
     
     "nTau",
     "Tau_pt",
-    "Tau_eta", 
-    "Tau_phi", 
-    "Tau_idDeepTau2017v2p1VSjet", 
-    "Tau_idDeepTau2017v2p1VSe", 
-    "Tau_idDeepTau2017v2p1VSmu", 
+    "Tau_eta",
+    "Tau_phi",
+    "Tau_idDeepTau2017v2p1VSjet",
+    "Tau_idDeepTau2017v2p1VSe",
+    "Tau_idDeepTau2017v2p1VSmu",
     "Tau_mass",
     "Tau_charge",
     "Tau_leadTkPtOverTauPt",
@@ -288,11 +288,11 @@ branchlist = [
     "Tau_genPartFlav",
     "Tau_jetIdx",
     
-    "Electron_effSF", 
+    "Electron_effSF",
     "Muon_effSF",
-    "Electron_effSF_errUp", 
+    "Electron_effSF_errUp",
     "Muon_effSF_errUp",
-    "Electron_effSF_errDown", 
+    "Electron_effSF_errDown",
     "Muon_effSF_errDown",
     
     "Jet_pt_nom",
@@ -320,8 +320,8 @@ branchlist = [
     "PrefireWeight",
     "PrefireWeight_Down",
     "PrefireWeight_Up",
-    "puWeight", 
-    "puWeightDown", 
+    "puWeight",
+    "puWeightDown",
     "puWeightUp",
     
     "Tau_rawDeepTau2017v2p1VSjet",
@@ -337,8 +337,8 @@ def execute_MC(chain, branchlist_, outFilePath = "./preselectionUL.root", outTre
 
     else:
         #df = delayed(RDataFrame)("Events", chain)
-        #df = RDataFrame("Events", chain) #to run on all
-        df = RDataFrame("Events", chain[0])
+        df = RDataFrame("Events", chain) #to run on all
+        #df = RDataFrame("Events", chain[0])
 
     df_year = df.DefinePerSample("Year","GetYear(rdfslot_, rdfsampleinfo_)")
     df_sample = df_year.DefinePerSample("Sample", "GetSample(rdfslot_, rdfsampleinfo_)")
@@ -412,7 +412,7 @@ def execute_MC(chain, branchlist_, outFilePath = "./preselectionUL.root", outTre
             df_jme = df_jme.Define("Jet_pt_{}".format(v), "jetVars.pt({})".format(1+n)).Define("Jet_mass_{}".format(v), "jetVars.mass({})".format(1+n))
     for n,v in enumerate(mett1smearvariations[1:]):
         if v in variations:
-            df_jme = df_jme.Define("MET_T1Smear_pt_{}".format(v), "metsVars.pt({})".format(1+n)).Define("MET_T1Smear_phi_{}".format(v), "metsVars.phi({})".format(1+n))  
+            df_jme = df_jme.Define("MET_T1Smear_pt_{}".format(v), "metsVars.pt({})".format(1+n)).Define("MET_T1Smear_phi_{}".format(v), "metsVars.phi({})".format(1+n))
     
     ### book snapshot ####
     opts = ROOT.RDF.RSnapshotOptions()
@@ -430,18 +430,18 @@ def execute_MC(chain, branchlist_, outFilePath = "./preselectionUL.root", outTre
 
     return df_jme_lazy
 
-df_sn = execute_MC(chain, branchlist, outFilePath = "./preselectionUL.root", outTreeName = "Events", label = "main") 
+df_sn = execute_MC(chain, branchlist, outFilePath = "./preselectionUL.root", outTreeName = "Events", label = "main")
 df_sn_gluglu = execute_MC(chain_gluglu, branchlist, outFilePath = "./preselectionUL_GluGlu.root",  outTreeName = "Events", nPart = 5, useFlag_BadPFMuonDzFilter = False, label = "gluglu")
 df_sn_WZ = execute_MC(chain_WZ, branchlist, outFilePath = "./preselectionUL_WZ.root", outTreeName = "Events", nPart = 5,  useFlag_BadPFMuonDzFilter = True, LHE = False, label = "WZ")
 
 if distributed == True:
-    RunGraphs = ROOT.RDF.Experimental.Distributed.RunGraphs   
+    RunGraphs = ROOT.RDF.Experimental.Distributed.RunGraphs
 else:
     RunGraphs = ROOT.RDF.RunGraphs
 
 proxies = [
-    df_sn, 
-    df_sn_gluglu, 
+    df_sn,
+    df_sn_gluglu,
     df_sn_WZ
 ]
 
