@@ -2,7 +2,7 @@
 
 import ROOT
 import os
-from dask.distributed import Client, PipInstall, WorkerPlugin
+from dask.distributed import Client, PipInstall, WorkerPlugin, LocalCluster
 import json
 from samplesUL import *
 import sys
@@ -171,7 +171,8 @@ mett1smearvariations = jetvariations
 
 if distributed == True:
     RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
-    client = Client() #address="tcp://127.0.0.1:"+str(sched_port))
+    cluster = LocalCluster
+    client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
     client.restart()
     try:
         client.register_plugin(UploadFile("/opt/workspace/persistent-storage/proxy"))
