@@ -171,8 +171,7 @@ mett1smearvariations = jetvariations
 
 if distributed == True:
     RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
-    cluster = LocalCluster()
-    client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
+    client = Client(processes=False) #address="tcp://127.0.0.1:"+str(sched_port))
     client.restart()
     try:
         client.register_plugin(UploadFile("/opt/workspace/persistent-storage/proxy"))
