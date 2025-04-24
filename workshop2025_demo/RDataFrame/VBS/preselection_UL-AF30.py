@@ -12,11 +12,11 @@ from distributed.diagnostics.plugin import UploadFile
 import dask
 from dask import delayed
 
-distributed = False
-MT = True
+distributed = True
+MT = False
 redirector = "file:///scratch/cms/" # Local storage nvme
 maxNfilespersample = 99999 #5 lower this number just for debugging purposes: 99999 prod.
-nPartitions = 384*3  #used only in distributed mode (golden rule 3*Nworkers)
+nPartitions = 192*3  #used only in distributed mode (golden rule 3*Nworkers)
 
 if distributed != True and MT == True:
     ROOT.ROOT.EnableImplicitMT()
@@ -171,7 +171,7 @@ mett1smearvariations = jetvariations
 
 if distributed == True:
     RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
-    client = Client(address="tcp://127.0.0.1:"+str(sched_port))
+    client = Client() #address="tcp://127.0.0.1:"+str(sched_port))
     client.restart()
     try:
         client.register_plugin(UploadFile("/opt/workspace/persistent-storage/proxy"))
@@ -448,3 +448,4 @@ proxies = [
 RunGraphs(proxies)
 
 dfs = [df_.GetValue() for df_ in proxies]
+client.close()
