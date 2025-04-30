@@ -17,6 +17,7 @@ if __name__ == '__main__':
     distributed = True
     MT = False
     redirector = "root://t2-xrdcms.lnl.infn.it:7070/" # Legnaro - OK
+    # Default in the txt chain files
     #redirector = "file:///scratch/cms/" # Local storage nvme
     maxNfilespersample = 99999 #5 lower this number just for debugging purposes: 99999 prod.
     nPartitions = 192*3  #used only in distributed mode (golden rule 3*Nworkers)
@@ -210,6 +211,7 @@ if __name__ == '__main__':
 
     aggregated_samples = aggregated_samples_UL2017
 
+    # The txt files are /scratch/cms/...
     def read_lines_from_file(filename):
         with open(filename, 'r') as file:
             return [line.strip() for line in file.readlines()]
@@ -217,6 +219,11 @@ if __name__ == '__main__':
     chain = read_lines_from_file('chain.txt')
     chain_gluglu = read_lines_from_file('chain_gluglu.txt')
     chain_WZ = read_lines_from_file('chain_WZ.txt')
+
+    if redirector:
+        chain = [path.replace("/scratch/cms", redirector) for path in chain]
+        chain_gluglu = [path.replace("/scratch/cms", redirector) for path in chain_gluglu]
+        chain_WZ = [path.replace("/scratch/cms", redirector) for path in chain_WZ]
 
     branchlist = [
         
