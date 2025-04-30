@@ -227,9 +227,9 @@ if __name__ == '__main__':
         chain_gluglu = [path.replace("file:///scratch/cms/", redirector) for path in chain_gluglu]
         chain_WZ = [path.replace("file:///scratch/cms/", redirector) for path in chain_WZ]
 
-    print(chain)
-    print(chain_gluglu)
-    print(chain_WZ)
+    print(chain[0])
+    print(chain_gluglu[0])
+    print(chain_WZ[0])
 
     branchlist = [
         
