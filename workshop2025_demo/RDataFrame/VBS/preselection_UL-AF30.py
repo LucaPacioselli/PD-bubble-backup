@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     distributed = True
     MT = False
-    redirector = "root://t2-xrdcms.lnl.infn.it:7070/" # Legnaro - OK
+    redirector = "root://t2-xrdcms.lnl.infn.it:7070" # Legnaro - OK
     # Default in the txt chain files
     #redirector = "file:///scratch/cms/" # Local storage nvme
     maxNfilespersample = 99999 #5 lower this number just for debugging purposes: 99999 prod.
@@ -221,9 +221,9 @@ if __name__ == '__main__':
     chain_WZ = read_lines_from_file('chain_WZ.txt')
 
     if redirector:
-        chain = [path.replace("file:///scratch/cms", redirector) for path in chain]
-        chain_gluglu = [path.replace("file:///scratch/cms", redirector) for path in chain_gluglu]
-        chain_WZ = [path.replace("file:///scratch/cms", redirector) for path in chain_WZ]
+        chain = [path.replace("file:///scratch/cms/", redirector) for path in chain]
+        chain_gluglu = [path.replace("file:///scratch/cms/", redirector) for path in chain_gluglu]
+        chain_WZ = [path.replace("file:///scratch/cms/", redirector) for path in chain_WZ]
 
     branchlist = [
         
