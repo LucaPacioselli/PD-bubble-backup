@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
     distributed = True
     MT = False
-    redirector = "root://t2-xrdcms.lnl.infn.it:7070" # Legnaro - OK\
+    redirector = "root://t2-xrdcms.lnl.infn.it:7070/" # Legnaro - OK\
     #redirector = "file:///shared-scratch/cms"
     #redirector = "file:///shared/home/cms"
     # Default in the txt chain files
@@ -177,7 +177,7 @@ if __name__ == '__main__':
 
     if distributed == True:
         RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
-        client = LocalCluster(n_workers=188, processes=False).get_client()
+        client = LocalCluster(n_workers=190, processes=False).get_client()
         #client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
         #client.restart()
         try:
