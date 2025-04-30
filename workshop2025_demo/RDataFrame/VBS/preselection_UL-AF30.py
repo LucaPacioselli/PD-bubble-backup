@@ -16,7 +16,8 @@ if __name__ == '__main__':
 
     distributed = True
     MT = False
-    redirector = "root://t2-xrdcms.lnl.infn.it:7070" # Legnaro - OK
+    #redirector = "root://t2-xrdcms.lnl.infn.it:7070" # Legnaro - OK\
+    redirector = "file:///shared-scratch/cms/"
     # Default in the txt chain files
     #redirector = "file:///scratch/cms/" # Local storage nvme
     maxNfilespersample = 99999 #5 lower this number just for debugging purposes: 99999 prod.
