@@ -221,9 +221,9 @@ if __name__ == '__main__':
     chain_WZ = read_lines_from_file('chain_WZ.txt')
 
     if redirector:
-        chain = [path.replace("/scratch/cms", redirector) for path in chain]
-        chain_gluglu = [path.replace("/scratch/cms", redirector) for path in chain_gluglu]
-        chain_WZ = [path.replace("/scratch/cms", redirector) for path in chain_WZ]
+        chain = [path.replace("file:///scratch/cms", redirector) for path in chain]
+        chain_gluglu = [path.replace("file:///scratch/cms", redirector) for path in chain_gluglu]
+        chain_WZ = [path.replace("file:///scratch/cms", redirector) for path in chain_WZ]
 
     branchlist = [
         
