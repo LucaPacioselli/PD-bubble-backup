@@ -16,7 +16,8 @@ if __name__ == '__main__':
 
     distributed = True
     MT = False
-    redirector = "file:///scratch/cms/" # Local storage nvme
+    redirector = "root://t2-xrdcms.lnl.infn.it:7070/" # Legnaro - OK
+    #redirector = "file:///scratch/cms/" # Local storage nvme
     maxNfilespersample = 99999 #5 lower this number just for debugging purposes: 99999 prod.
     nPartitions = 192*3  #used only in distributed mode (golden rule 3*Nworkers)
 
