@@ -27,6 +27,30 @@ if __name__ == '__main__':
     if distributed != True and MT == True:
         ROOT.ROOT.EnableImplicitMT()
 
+    def set_proxy(dask_worker):
+        import os
+        import shutil
+        working_dir = dask_worker.local_directory
+        print(working_dir)
+        os.environ['X509_USER_PROXY'] = working_dir + '/proxy'
+        os.environ['X509_CERT_DIR']="/cvmfs/grid.cern.ch/etc/grid-security/certificates/"
+        os.environ['EXTRA_CLING_ARGS'] = "-O2"
+        os.popen('rm -f "./*.csv"')
+        try:
+            shutil.copyfile(working_dir + '/proxy', working_dir + '/../../../proxy')
+        except:
+            pass
+        try:
+            os.chmod(working_dir + '/proxy', 0o400)
+        except:
+            pass
+        try:
+            os.chmod(working_dir + '/../../../proxy', 0o400)
+        except:
+            pass
+            
+        return os.environ.get("X509_USER_PROXY")
+
     #from my_initialization_function_UL import *
     text_file = open("preselection_UL.h", "r")
     data = text_file.read()
