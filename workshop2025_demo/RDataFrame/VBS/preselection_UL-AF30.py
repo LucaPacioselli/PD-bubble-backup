@@ -211,7 +211,7 @@ if __name__ == '__main__':
 
     aggregated_samples = aggregated_samples_UL2017
 
-    # The txt files are /scratch/cms/...
+    # The txt files are "file:///scratch/cms/"...
     def read_lines_from_file(filename):
         with open(filename, 'r') as file:
             return [line.strip() for line in file.readlines()]
@@ -224,6 +224,10 @@ if __name__ == '__main__':
         chain = [path.replace("file:///scratch/cms/", redirector) for path in chain]
         chain_gluglu = [path.replace("file:///scratch/cms/", redirector) for path in chain_gluglu]
         chain_WZ = [path.replace("file:///scratch/cms/", redirector) for path in chain_WZ]
+
+    print(chain)
+    print(chain_gluglu)
+    print(chain_WZ)
 
     branchlist = [
         
