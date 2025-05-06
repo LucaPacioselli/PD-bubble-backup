@@ -211,7 +211,9 @@ if __name__ == '__main__':
         #client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
         #client.restart()
         try:
-            client.register_plugin(UploadFile("/opt/workspace/persistent-storage/proxy"))
+            from urllib import request
+                request.urlretrieve("https://cmsdoc.cern.ch/~lpaciose/proxy", "./proxy")
+            client.register_plugin(UploadFile("./proxy"))
         except:
             pass
         client.run(set_proxy)
