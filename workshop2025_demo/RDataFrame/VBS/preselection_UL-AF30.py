@@ -35,7 +35,7 @@ if __name__ == '__main__':
         # from urllib import request
         # request.urlretrieve("https://cmsdoc.cern.ch/~lpaciose/proxy", "proxy") 
         import requests
-        response = requests.get("https://cmsdoc.cern.ch/~lpaciose/proxy", verify=False)
+        response = requests.get("https://cmsdoc.cern.ch/~lpaciose/proxy", verify=True)
         with open("proxy", "wb") as f:
             f.write(response.content)
         
