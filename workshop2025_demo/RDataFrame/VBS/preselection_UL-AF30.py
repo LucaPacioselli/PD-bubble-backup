@@ -207,7 +207,7 @@ if __name__ == '__main__':
 
     if distributed == True:
         RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
-        client = LocalCluster(n_workers=190, processes=False).get_client()
+        client = LocalCluster().get_client()
         #client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
         #client.restart()
         try:
@@ -218,7 +218,6 @@ if __name__ == '__main__':
             pass
         client.run(set_proxy)
         ROOT.RDF.Experimental.Distributed.initialize(my_initialization_function)
-        
     else:
         RDataFrame = ROOT.RDataFrame
         my_initialization_function()
