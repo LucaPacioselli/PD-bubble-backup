@@ -33,9 +33,9 @@ if __name__ == '__main__':
         working_dir = dask_worker.local_directory
         
         from urllib import request
-        request.urlretrieve("http://cmsdoc.cern.ch/~lpaciose/proxy", "proxy") 
+        request.urlretrieve("https://cmsdoc.cern.ch/~lpaciose/proxy", "proxy") 
         # import requests
-        # response = requests.get("http://cmsdoc.cern.ch/~lpaciose/proxy", verify=False)
+        # response = requests.get("https://cmsdoc.cern.ch/~lpaciose/proxy", verify=False)
         # with open("proxy", "wb") as f:
         #     f.write(response.content)
         
@@ -78,10 +78,10 @@ if __name__ == '__main__':
         jer_prefix_MC = "Summer19UL17_JRV3_MC"
         
         from urllib import request
-        request.urlretrieve("http://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR2017UL.txt", "RoccoR2017UL.txt")
-        request.urlretrieve("http://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR.cc", "RoccoR.cc")
-        request.urlretrieve("http://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR.h", "RoccoR.h")
-        request.urlretrieve("http://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/btagSF/DeepJet_106XUL17_v3_new.csv", "DeepJet_106XUL17_v3_new.csv")
+        request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR2017UL.txt", "RoccoR2017UL.txt")
+        request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR.cc", "RoccoR.cc")
+        request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR.h", "RoccoR.h")
+        request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/btagSF/DeepJet_106XUL17_v3_new.csv", "DeepJet_106XUL17_v3_new.csv")
         
         
         ROOT.gInterpreter.Declare(
@@ -92,13 +92,13 @@ if __name__ == '__main__':
             #endif
             ''')
 
-        request.urlretrieve("http://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L1FastJet_AK4PFchs.txt".format(jec_prefix_MC), "{}_L1FastJet_AK4PFchs.txt".format(jec_prefix_MC))
-        request.urlretrieve("http://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L2Relative_AK4PFchs.txt".format(jec_prefix_MC), "{}_L2Relative_AK4PFchs.txt".format(jec_prefix_MC))
-        request.urlretrieve("http://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L3Absolute_AK4PFchs.txt".format(jec_prefix_MC), "{}_L3Absolute_AK4PFchs.txt".format(jec_prefix_MC))
-        request.urlretrieve("http://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L2L3Residual_AK4PFchs.txt".format(jec_prefix_MC), "{}_L2L3Residual_AK4PFchs.txt".format(jec_prefix_MC))
-        request.urlretrieve("http://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_UncertaintySources_AK4PFchs.txt".format(jec_prefix_MC), "{}_UncertaintySources_AK4PFchs.txt".format(jec_prefix_MC))
-        request.urlretrieve("http://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_PtResolution_AK4PFchs.txt".format(jer_prefix_MC), "{}_PtResolution_AK4PFchs.txt".format(jer_prefix_MC))
-        request.urlretrieve("http://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_SF_AK4PFchs.txt".format(jer_prefix_MC), "{}_SF_AK4PFchs.txt".format(jer_prefix_MC))
+        request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L1FastJet_AK4PFchs.txt".format(jec_prefix_MC), "{}_L1FastJet_AK4PFchs.txt".format(jec_prefix_MC))
+        request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L2Relative_AK4PFchs.txt".format(jec_prefix_MC), "{}_L2Relative_AK4PFchs.txt".format(jec_prefix_MC))
+        request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L3Absolute_AK4PFchs.txt".format(jec_prefix_MC), "{}_L3Absolute_AK4PFchs.txt".format(jec_prefix_MC))
+        request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_L2L3Residual_AK4PFchs.txt".format(jec_prefix_MC), "{}_L2L3Residual_AK4PFchs.txt".format(jec_prefix_MC))
+        request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_UncertaintySources_AK4PFchs.txt".format(jec_prefix_MC), "{}_UncertaintySources_AK4PFchs.txt".format(jec_prefix_MC))
+        request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_PtResolution_AK4PFchs.txt".format(jer_prefix_MC), "{}_PtResolution_AK4PFchs.txt".format(jer_prefix_MC))
+        request.urlretrieve("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/jme/{}_SF_AK4PFchs.txt".format(jer_prefix_MC), "{}_SF_AK4PFchs.txt".format(jer_prefix_MC))
         
         
         ROOT.gInterpreter.Declare('{}'.format(data))
@@ -212,7 +212,7 @@ if __name__ == '__main__':
         #client.restart()
         try:
             from urllib import request
-            request.urlretrieve("http://cmsdoc.cern.ch/~lpaciose/proxy", "./proxy")
+            request.urlretrieve("https://cmsdoc.cern.ch/~lpaciose/proxy", "./proxy")
             client.register_plugin(UploadFile("./proxy"))
         except:
             pass
