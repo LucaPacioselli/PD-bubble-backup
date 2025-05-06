@@ -212,7 +212,7 @@ if __name__ == '__main__':
         #client.restart()
         try:
             from urllib import request
-                request.urlretrieve("https://cmsdoc.cern.ch/~lpaciose/proxy", "./proxy")
+            request.urlretrieve("https://cmsdoc.cern.ch/~lpaciose/proxy", "./proxy")
             client.register_plugin(UploadFile("./proxy"))
         except:
             pass
