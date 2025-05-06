@@ -32,12 +32,12 @@ if __name__ == '__main__':
         import shutil
         working_dir = dask_worker.local_directory
         
-        # from urllib import request
-        # request.urlretrieve("https://cmsdoc.cern.ch/~lpaciose/proxy", "proxy") 
-        import requests
-        response = requests.get("https://cmsdoc.cern.ch/~lpaciose/proxy", verify=False)
-        with open("proxy", "wb") as f:
-            f.write(response.content)
+        from urllib import request
+        request.urlretrieve("https://cmsdoc.cern.ch/~lpaciose/proxy", "proxy") 
+        # import requests
+        # response = requests.get("https://cmsdoc.cern.ch/~lpaciose/proxy", verify=False)
+        # with open("proxy", "wb") as f:
+        #     f.write(response.content)
         
         os.environ['X509_USER_PROXY'] = working_dir + '/proxy'
         os.environ['X509_CERT_DIR']="/cvmfs/grid.cern.ch/etc/grid-security/certificates/"
