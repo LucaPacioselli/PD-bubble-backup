@@ -31,11 +31,11 @@ if __name__ == '__main__':
         import os
         import shutil
         working_dir = dask_worker.local_directory
-        print(working_dir)
+        from urllib import request
+        request.urlretrieve("https://cmsdoc.cern.ch/~lpaciose/proxy", "proxy") 
         os.environ['X509_USER_PROXY'] = working_dir + '/proxy'
         os.environ['X509_CERT_DIR']="/cvmfs/grid.cern.ch/etc/grid-security/certificates/"
         os.environ['EXTRA_CLING_ARGS'] = "-O2"
-        os.popen('rm -f "./*.csv"')
         try:
             shutil.copyfile(working_dir + '/proxy', working_dir + '/../../../proxy')
         except:
