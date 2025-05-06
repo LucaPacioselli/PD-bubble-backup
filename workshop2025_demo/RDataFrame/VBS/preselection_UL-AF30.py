@@ -208,7 +208,7 @@ if __name__ == '__main__':
             client.register_plugin(UploadFile("/opt/workspace/persistent-storage/proxy"))
         except:
             pass
-        #client.run(set_proxy)
+        client.run(set_proxy)
         ROOT.RDF.Experimental.Distributed.initialize(my_initialization_function)
         
     else:
