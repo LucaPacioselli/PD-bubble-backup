@@ -226,6 +226,7 @@ if __name__ == '__main__':
             https_get_file("https://cmsdoc.cern.ch/~lpaciose/proxy", "proxy")
             current_path = os.path.abspath(os.getcwd())
             proxy_path = current_path + '/proxy'
+            print(proxy_path)
             os.environ['X509_USER_PROXY'] = proxy_path
             client.register_plugin(UploadFile(proxy_path))
             print("after register plugin")
