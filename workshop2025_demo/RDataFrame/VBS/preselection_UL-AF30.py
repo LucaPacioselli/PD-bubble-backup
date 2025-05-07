@@ -213,8 +213,8 @@ if __name__ == '__main__':
         #client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
         #client.restart()
         try:
-            https_get_file("https://cmsdoc.cern.ch/~lpaciose/proxy", "./proxy")
-            client.register_plugin(UploadFile("./proxy"))
+            https_get_file("https://cmsdoc.cern.ch/~lpaciose/proxy", "proxy")
+            client.register_plugin(UploadFile("proxy"))
         except:
             pass
         client.run(set_proxy)
