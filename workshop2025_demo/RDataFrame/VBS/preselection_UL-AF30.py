@@ -29,7 +29,10 @@ if __name__ == '__main__':
 
     # Workaround to CA verification
     def https_get_file(file_path, name):
-        import requests
+        try:
+            import requests
+        except:
+            print("No import requests")
         response = requests.get(file_path, verify=False)
         with open(name, "wb") as f:
             f.write(response.content)
