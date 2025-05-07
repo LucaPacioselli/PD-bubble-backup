@@ -214,7 +214,7 @@ if __name__ == '__main__':
 
     if distributed == True:
         RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
-        client = LocalCluster(n_workers=10, threads_per_worker=2).get_client()
+        client = LocalCluster(n_workers=10, threads_per_worker=2, processes=False).get_client()
         #client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
         #client.restart()
         try:
