@@ -1,5 +1,7 @@
 #!/opt/conda/bin/python3
 
+
+freeze_support()
 import ROOT
 import os
 from dask.distributed import Client, PipInstall, WorkerPlugin, LocalCluster
