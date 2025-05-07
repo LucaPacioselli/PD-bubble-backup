@@ -14,6 +14,7 @@ if __name__ == '__main__':
     import dask
     from dask import delayed
 
+    import requests
     from requests.packages.urllib3.exceptions import InsecureRequestWarning
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
