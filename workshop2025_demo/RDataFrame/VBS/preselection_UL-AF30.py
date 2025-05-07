@@ -218,7 +218,9 @@ if __name__ == '__main__':
         #client.restart()
         try:
             #https_get_file("https://cmsdoc.cern.ch/~lpaciose/proxy", "proxy")
+            print("before register plugin")
             client.register_plugin(UploadFile("proxy"))
+            print("after register plugin")
         except:
             print("no Upload file proxy")
         client.run(set_proxy)
