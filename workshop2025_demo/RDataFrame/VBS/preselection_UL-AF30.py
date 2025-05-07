@@ -14,6 +14,9 @@ if __name__ == '__main__':
     import dask
     from dask import delayed
 
+    from requests.packages.urllib3.exceptions import InsecureRequestWarning
+    requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
     distributed = True
     MT = False
     #redirector = ""
