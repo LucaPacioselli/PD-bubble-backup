@@ -14,8 +14,8 @@ if __name__ == '__main__':
     import dask
     from dask import delayed
 
-    distributed = False
-    MT = True
+    distributed = True
+    MT = False
     redirector = ""
     #redirector = "root://t2-xrdcms.lnl.infn.it:7070/" # Legnaro - OK\
     #redirector = "file:///shared-scratch/cms"
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     # Default in the txt chain files
     #redirector = "file:///scratch/cms" # Local storage nvme
     maxNfilespersample = 1 # 99999 #5 lower this number just for debugging purposes: 99999 prod.
-    nPartitions = 10*3  #used only in distributed mode (golden rule 3*Nworkers)
+    nPartitions = 92*3  #used only in distributed mode (golden rule 3*Nworkers)
 
     if distributed != True and MT == True:
         ROOT.ROOT.EnableImplicitMT()
@@ -214,7 +214,7 @@ if __name__ == '__main__':
 
     if distributed == True:
         RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
-        client = LocalCluster().get_client()
+        client = LocalCluster(n_workers=92).get_client()
         #client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
         #client.restart()
         try:
