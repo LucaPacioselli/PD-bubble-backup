@@ -16,6 +16,7 @@ if __name__ == '__main__':
 
     distributed = False
     MT = True
+    redirector = ""
     #redirector = "root://t2-xrdcms.lnl.infn.it:7070/" # Legnaro - OK\
     #redirector = "file:///shared-scratch/cms"
     #redirector = "file:///shared/home/cms"
@@ -264,7 +265,7 @@ if __name__ == '__main__':
     chain_gluglu = read_lines_from_file('chain_gluglu.txt')
     chain_WZ = read_lines_from_file('chain_WZ.txt')
 
-    if redirector:
+    if redirector != "":
         chain = [path.replace("file:///scratch/cms/", redirector) for path in chain]
         chain_gluglu = [path.replace("file:///scratch/cms/", redirector) for path in chain_gluglu]
         chain_WZ = [path.replace("file:///scratch/cms/", redirector) for path in chain_WZ]
