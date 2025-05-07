@@ -79,12 +79,10 @@ if __name__ == '__main__':
         jec_prefix_MC = "Summer19UL17_V6_MC"
         jer_prefix_MC = "Summer19UL17_JRV3_MC"
         
-        from urllib import request
         https_get_file("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR2017UL.txt", "RoccoR2017UL.txt")
         https_get_file("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR.cc", "RoccoR.cc")
         https_get_file("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/python/postprocessing/data/roccor.Run2.v5/RoccoR.h", "RoccoR.h")
         https_get_file("https://ttedesch.web.cern.ch/ttedesch/NEWERA/nanoAOD-tools/data/btagSF/DeepJet_106XUL17_v3_new.csv", "DeepJet_106XUL17_v3_new.csv")
-        
         
         ROOT.gInterpreter.Declare(
             '''
