@@ -217,22 +217,11 @@ if __name__ == '__main__':
         #client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
         #client.restart()
         try:
-            #https_get_file("https://cmsdoc.cern.ch/~lpaciose/proxy", "proxy")
-            proxy_path = os.environ.get("X509_USER_PROXY")
-            if proxy_path:
-                print(f"X509_USER_PROXY is set to: {proxy_path}")
-
-                # Equivalent of `ls -l $X509_USER_PROXY`
-                if os.path.exists(proxy_path):
-                    file_stats = os.stat(proxy_path)
-                    print(f"File exists. Size: {file_stats.st_size} bytes")
-                    print(f"Permissions: {oct(file_stats.st_mode)}")
-                else:
-                    print("The proxy file path is set but the file does not exist.")
-            else:
-                print("X509_USER_PROXY is not set.")
-                
-            client.register_plugin(UploadFile("proxy"))
+            https_get_file("https://cmsdoc.cern.ch/~lpaciose/proxy", "proxy")
+            current_path = os.path.abspath(os.getcwd())
+            proxy_path = current_path + '/proxy'
+            os.environ['X509_USER_PROXY'] = proxy_path
+            client.register_plugin(UploadFile(proxy_path))
             print("after register plugin")
         except:
             print("no Upload file proxy")
