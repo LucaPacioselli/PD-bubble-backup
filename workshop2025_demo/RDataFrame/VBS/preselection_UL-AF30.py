@@ -218,7 +218,20 @@ if __name__ == '__main__':
         #client.restart()
         try:
             #https_get_file("https://cmsdoc.cern.ch/~lpaciose/proxy", "proxy")
-            print("before register plugin")
+            proxy_path = os.environ.get("X509_USER_PROXY")
+            if proxy_path:
+                print(f"X509_USER_PROXY is set to: {proxy_path}")
+
+                # Equivalent of `ls -l $X509_USER_PROXY`
+                if os.path.exists(proxy_path):
+                    file_stats = os.stat(proxy_path)
+                    print(f"File exists. Size: {file_stats.st_size} bytes")
+                    print(f"Permissions: {oct(file_stats.st_mode)}")
+                else:
+                    print("The proxy file path is set but the file does not exist.")
+            else:
+                print("X509_USER_PROXY is not set.")
+                
             client.register_plugin(UploadFile("proxy"))
             print("after register plugin")
         except:
