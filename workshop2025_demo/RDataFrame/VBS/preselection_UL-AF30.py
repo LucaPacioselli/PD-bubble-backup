@@ -16,8 +16,8 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-distributed = True
-MT = False
+distributed = False
+MT = True
 redirector = ""
 #redirector = "root://t2-xrdcms.lnl.infn.it:7070/" # Legnaro - OK\
 #redirector = "file:///shared-scratch/cms"
