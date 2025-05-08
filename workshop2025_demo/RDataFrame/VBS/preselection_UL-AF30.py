@@ -84,7 +84,6 @@ def my_initialization_function():
     sys.path.append("/lib/python3.8/site-packages")
     ROOT.gInterpreter.AddIncludePath("/usr/lib/boost_1_77_0")
     ROOT.gInterpreter.AddIncludePath("/opt/conda/include")
-    ROOT.gInterpreter.AddIncludePath("/scratch/jobs/dspiga")
     
     jec_prefix_MC = "Summer19UL17_V6_MC"
     jer_prefix_MC = "Summer19UL17_JRV3_MC"
