@@ -6,7 +6,7 @@ from dask.distributed import Client, PipInstall, WorkerPlugin, LocalCluster
 import json
 from samplesUL import *
 import sys
-from dask_jobqueue import HTCondorCluster
+from dask_jobqueue import SLURMCluster, HTCondorCluster
 from distributed.diagnostics.plugin import UploadFile
 
 import dask
@@ -217,7 +217,8 @@ mett1smearvariations = jetvariations
 
 if distributed == True:
     RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
-    client = LocalCluster(n_workers=1, processes=False).get_client() # n_workers=10, threads_per_worker=2, processes=False
+    cluster = SLURMCluster(n_workers=10, nanny=True)
+    client = Client(cluster) # n_workers=10, threads_per_worker=2, processes=False
     #client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
     #client.restart()
     try:
