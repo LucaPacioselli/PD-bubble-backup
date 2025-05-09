@@ -219,7 +219,7 @@ mett1smearvariations = jetvariations
 if distributed == True:
     RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
     #cluster = SLURMCluster(n_workers=10, cores=1, memory='2GB', nanny=True)
-    client = LocalCluster(n_workers=1, threads_per_worker=2, processes=False).get_client() #n_workers=1, threads_per_worker=2, processes=False
+    client = LocalCluster(processes=False).get_client() #n_workers=1, threads_per_worker=2, processes=False
     #client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
     client.restart()
     try:
