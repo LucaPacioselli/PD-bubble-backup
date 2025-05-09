@@ -137,7 +137,9 @@ def my_initialization_function():
     jecParams = getattr(ROOT, "std::vector<JetCorrectorParameters>")()
     jecParams.push_back(ROOT.JetCorrectorParameters("./{}_L1FastJet_AK4PFchs.txt".format(jec_prefix_MC)))
     jecParams.push_back(ROOT.JetCorrectorParameters("./{}_L2Relative_AK4PFchs.txt".format(jec_prefix_MC)))
-    #jecParams.push_back(ROOT.JetCorrectorParameters("./{}_L3Absolute_AK4PFchs.txt".format(jec_prefix_MC)))
+    ###
+    jecParams.push_back(ROOT.JetCorrectorParameters("./{}_L3Absolute_AK4PFchs.txt".format(jec_prefix_MC)))
+    ###
     jecParams.push_back(ROOT.JetCorrectorParameters("./{}_L2L3Residual_AK4PFchs.txt".format(jec_prefix_MC)))
     calc.setJEC(jecParams)
 
