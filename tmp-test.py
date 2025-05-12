@@ -69,25 +69,26 @@
 # h_varied["dummyVariation:down"].Draw('SAME')
 # c.Draw()
 
-import dask.bag as db
-import json
-from dask.distributed import Client, LocalCluster, progress
+if __name__ == '__main__':
+    import dask.bag as db
+    import json
+    from dask.distributed import Client, LocalCluster, progress
 
-client = LocalCluster(threads_per_worker=1,
-                n_workers=4,
-                memory_limit='2GB').get_client()
+    client = LocalCluster(threads_per_worker=1,
+                    n_workers=4,
+                    memory_limit='2GB').get_client()
 
-db.read_text('https://archive.analytics.mybinder.org/index.jsonl').map(json.loads).compute()
+    db.read_text('https://archive.analytics.mybinder.org/index.jsonl').map(json.loads).compute()
 
-filenames = (db.read_text('https://archive.analytics.mybinder.org/index.jsonl')
-               .map(json.loads)
-               .pluck('name')
-               .compute())
+    filenames = (db.read_text('https://archive.analytics.mybinder.org/index.jsonl')
+                .map(json.loads)
+                .pluck('name')
+                .compute())
 
-filenames = ['https://archive.analytics.mybinder.org/' + fn for fn in filenames]
-print(filenames[:5])
+    filenames = ['https://archive.analytics.mybinder.org/' + fn for fn in filenames]
+    print(filenames[:5])
 
-events = db.read_text(filenames).map(json.loads)
-events.take(2)
+    events = db.read_text(filenames).map(json.loads)
+    events.take(2)
 
-events.pluck('spec').frequencies(sort=True).take(20)
+    events.pluck('spec').frequencies(sort=True).take(20)
