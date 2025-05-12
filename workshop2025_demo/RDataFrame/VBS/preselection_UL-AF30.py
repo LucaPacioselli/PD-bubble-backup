@@ -18,8 +18,8 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 distributed = True
 MT = False
-#redirector = ""
-redirector = "root://t2-xrdcms.lnl.infn.it:7070/" # Legnaro - OK\
+redirector = ""
+#redirector = "root://t2-xrdcms.lnl.infn.it:7070/" # Legnaro - OK\
 #redirector = "file:///shared-scratch/cms"
 #redirector = "file:///shared/home/cms"
 # Default in the txt chain files
