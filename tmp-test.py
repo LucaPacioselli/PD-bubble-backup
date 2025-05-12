@@ -152,18 +152,19 @@ if __name__ == '__main__':
             df = RDataFrame("Events", chain, npartitions=nPart, daskclient=client)  #when using standard root versions
         
         df_new = df.Define("x", "27")
-        ### book snapshot ####
-        # opts = ROOT.RDF.RSnapshotOptions()
-        # opts.fLazy = True
 
-        # if LHE == False:
-        #     branches = branchlist_[4:]
-        # else:
-        #     branches = branchlist_
-        # if distributed == True:
-        #     df_lazy = df.Snapshot(outTreeName, outFilePath, branches, opts)
+        ### book snapshot ####
+        opts = ROOT.RDF.RSnapshotOptions()
+        opts.fLazy = True
+
+        if LHE == False:
+            branches = branchlist_[4:]
+        else:
+            branches = branchlist_
+        if distributed == True:
+            df_lazy = df_new.Snapshot(outTreeName, outFilePath, branches, opts)
         
-        return df_new
+        return df_lazy
 
     df_sn = execute_MC(chain, branchlist, outFilePath = "./preselectionUL.root", outTreeName = "Events", label = "main") 
 
