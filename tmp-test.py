@@ -176,6 +176,6 @@ if __name__ == '__main__':
     ]
 
     RunGraphs(proxies)
-    dfs = [df_.GetKeys() for df_ in proxies]
+    dfs = [df_.GetValue() for df_ in proxies]
 
     # print(dfs.head(5))
