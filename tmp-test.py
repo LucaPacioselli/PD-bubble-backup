@@ -75,22 +75,12 @@ if __name__ == '__main__':
     from dask.distributed import Client, LocalCluster
     import dask.bag as db
 
-    # Workaround to CA verification
-    def https_get_file(file_path, name):
-        try:
-            import requests
-        except:
-            print("No import requests")
-        response = requests.get(file_path, verify=False)
-        with open(name, "wb") as f:
-            f.write(response.content)
-
     # Start Dask cluster
     client = Client(LocalCluster(threads_per_worker=1, n_workers=4, memory_limit='2GB'))
 
     # Fetch the index file manually
     index_url = 'https://archive.analytics.mybinder.org/index.jsonl'
-    response = https_get_file(index_url)
+    response = requests.get(index_url, verify=False)
     lines = response.text.strip().split('\n')
     records = [json.loads(line) for line in lines]
 
@@ -100,7 +90,7 @@ if __name__ == '__main__':
 
     # Fetch each remote file and build a Dask bag from content
     def fetch_and_parse(url):
-        r = https_get_file(url)
+        r = requests.get(url, verify=False)
         return [json.loads(line) for line in r.text.strip().split('\n')]
 
     # Create Dask bag from list of files
