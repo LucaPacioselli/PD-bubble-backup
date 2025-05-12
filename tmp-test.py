@@ -142,7 +142,7 @@ if __name__ == '__main__':
     print(branchlist)
 
     RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
-    client = LocalCluster(threads_per_worker=1, n_workers=1).get_client()
+    client = LocalCluster(threads_per_worker=1, n_workers=2, processes=False).get_client()
 
     chain = ["/shared-scratch/cms/store/mc/RunIISummer20UL17NanoAODv9/ZGToLLG_01J_5f_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/70000/AF4D5462-30E8-EA43-AA8A-A1EADA9796BC.root"]
 
