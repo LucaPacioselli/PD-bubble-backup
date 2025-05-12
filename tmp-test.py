@@ -76,7 +76,7 @@ if __name__ == '__main__':
     import dask
 
     # Start Dask cluster
-    client = Client(LocalCluster(threads_per_worker=1, n_workers=4, memory_limit='2GB'))
+    #client = Client(LocalCluster(threads_per_worker=1, n_workers=4, memory_limit='2GB'))
 
     df = dask.datasets.timeseries()
     print(df)
