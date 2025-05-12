@@ -13,7 +13,7 @@ def my_initialization_function():
 
 
 #client = Client(address="tcp://127.0.0.1:"+str(sched_port))
-client = LocalCluster(n_workers=10, processes=False).get_client()
+client = LocalCluster(threads_per_worker=1, n_workers=10).get_client() #, processes=False
 ROOT.RDF.Experimental.Distributed.initialize(my_initialization_function)
 
 chain = [
@@ -22,7 +22,7 @@ chain = [
          #"root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W3JetsToLNu.root",
         ]
 
-df = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame("Events", chain, npartitions=nmaxpartitions, daskclient=client)   
+df = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame("Events", chain, npartitions=nmaxpartitions, executor=client)   
 
 df_varied = df.Vary("Muon_pt", "ROOT::VecOps::RVec<ROOT::VecOps::RVec<float>>{Muon_pt*0.8, Muon_pt*1.2}", variationTags=["down", "up"], variationName="dummyVariation")
 
