@@ -70,25 +70,32 @@
 # c.Draw()
 
 if __name__ == '__main__':
-    import dask.bag as db
+    import requests
     import json
-    from dask.distributed import Client, LocalCluster, progress
+    from dask.distributed import Client, LocalCluster
+    import dask.bag as db
 
-    client = LocalCluster(threads_per_worker=1,
-                    n_workers=4,
-                    memory_limit='2GB').get_client()
+    # Start Dask cluster
+    client = Client(LocalCluster(threads_per_worker=1, n_workers=4, memory_limit='2GB'))
 
-    db.read_text('https://archive.analytics.mybinder.org/index.jsonl').map(json.loads).compute()
+    # Fetch the index file manually
+    index_url = 'https://archive.analytics.mybinder.org/index.jsonl'
+    response = requests.get(index_url)
+    lines = response.text.strip().split('\n')
+    records = [json.loads(line) for line in lines]
 
-    filenames = (db.read_text('https://archive.analytics.mybinder.org/index.jsonl')
-                .map(json.loads)
-                .pluck('name')
-                .compute())
-
-    filenames = ['https://archive.analytics.mybinder.org/' + fn for fn in filenames]
+    # Build filenames
+    filenames = ['https://archive.analytics.mybinder.org/' + rec['name'] for rec in records]
     print(filenames[:5])
 
-    events = db.read_text(filenames).map(json.loads)
-    events.take(2)
+    # Fetch each remote file and build a Dask bag from content
+    def fetch_and_parse(url):
+        r = requests.get(url)
+        return [json.loads(line) for line in r.text.strip().split('\n')]
 
-    events.pluck('spec').frequencies(sort=True).take(20)
+    # Create Dask bag from list of files
+    bag = db.from_sequence(filenames).map(fetch_and_parse).flatten()
+
+    # Dummy computation
+    print(bag.take(2))
+    print(bag.pluck('spec').frequencies(sort=True).take(20))
