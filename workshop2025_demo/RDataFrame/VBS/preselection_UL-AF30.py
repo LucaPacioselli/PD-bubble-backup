@@ -25,7 +25,7 @@ redirector = ""
 # Default in the txt chain files
 #redirector = "file:///scratch/cms" # Local storage nvme
 maxNfilespersample = 1 # 99999 #5 lower this number just for debugging purposes: 99999 prod.
-nPartitions = 10*3  #used only in distributed mode (golden rule 3*Nworkers)
+nPartitions = 1*3  #used only in distributed mode (golden rule 3*Nworkers)
 
 if distributed != True and MT == True:
     ROOT.ROOT.EnableImplicitMT()
@@ -219,7 +219,7 @@ mett1smearvariations = jetvariations
 if distributed == True:
     RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
     #cluster = SLURMCluster(n_workers=10, cores=1, memory='2GB', nanny=True)
-    client = LocalCluster(processes=False).get_client() #n_workers=1, threads_per_worker=2, processes=False
+    client = LocalCluster(n_workers=1, processes=False).get_client() #n_workers=1, threads_per_worker=2, processes=False
     #client = Client(cluster) #address="tcp://127.0.0.1:"+str(sched_port))
     client.restart()
     try:
