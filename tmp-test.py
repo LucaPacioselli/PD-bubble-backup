@@ -151,7 +151,7 @@ if __name__ == '__main__':
             #df = RDataFrame("Events", chain, npartitions=nPart, daskclient=client, monitor_label = label)  #when using root version with monitoring features (/cvmfs/images.dodas.infn.it/registry.hub.docker.com/dodasts/root-in-docker:ubuntu22-kernel-v1-monitoring)
             df = RDataFrame("Events", chain, npartitions=nPart, daskclient=client)  #when using standard root versions
         
-        df_new = df.Define("x", 27)
+        df_new = df.Define("x", "27")
         ### book snapshot ####
         # opts = ROOT.RDF.RSnapshotOptions()
         # opts.fLazy = True
