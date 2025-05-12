@@ -1,33 +1,33 @@
-if __name__ == '__main__':
-    import ROOT
-    import os
-    from dask.distributed import Client, LocalCluster
+# if __name__ == '__main__':
+#     import ROOT
+#     import os
+#     from dask.distributed import Client, LocalCluster
 
-    nmaxpartitions = 30
+#     nmaxpartitions = 30
 
-    text_file = open("utils.h", "r")
-    data = text_file.read()
+#     text_file = open("utils.h", "r")
+#     data = text_file.read()
 
 
-    def my_initialization_function():
-        ROOT.gInterpreter.Declare('{}'.format(data))
+#     def my_initialization_function():
+#         ROOT.gInterpreter.Declare('{}'.format(data))
 
 
     #client = Client(address="tcp://127.0.0.1:"+str(sched_port))
-    client = LocalCluster(threads_per_worker=1, n_workers=10).get_client() #, processes=False
-    ROOT.RDF.Experimental.Distributed.initialize(my_initialization_function)
+    # client = LocalCluster(threads_per_worker=1, n_workers=10).get_client() #, processes=False
+    # ROOT.RDF.Experimental.Distributed.initialize(my_initialization_function)
 
-    chain = [
-            #"root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W1JetsToLNu.root",
-            "root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W2JetsToLNu.root",
-            #"root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W3JetsToLNu.root",
-            ]
+    # chain = [
+    #         #"root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W1JetsToLNu.root",
+    #         "root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W2JetsToLNu.root",
+    #         #"root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W3JetsToLNu.root",
+    #         ]
 
-    df = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame("Events", chain, npartitions=nmaxpartitions, executor=client)   
+    # df = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame("Events", chain, npartitions=nmaxpartitions, executor=client)   
 
-    df_varied = df.Vary("Muon_pt", "ROOT::VecOps::RVec<ROOT::VecOps::RVec<float>>{Muon_pt*0.8, Muon_pt*1.2}", variationTags=["down", "up"], variationName="dummyVariation")
+    # df_varied = df.Vary("Muon_pt", "ROOT::VecOps::RVec<ROOT::VecOps::RVec<float>>{Muon_pt*0.8, Muon_pt*1.2}", variationTags=["down", "up"], variationName="dummyVariation")
 
-    df_atleast2Jets = df_varied.Filter("nJet>=2", "At least two jets")
+    # df_atleast2Jets = df_varied.Filter("nJet>=2", "At least two jets")
     # df_GoodJets = df_atleast2Jets.Define("GoodJets_idx", "GoodJets(Jet_eta, Jet_pt, Jet_puId)")
     # df_atleast2GoodJets = df_GoodJets.Filter("atleast2GoodJets(GoodJets_idx)", "At least two good jets")
     # df_VBSjets = df_atleast2GoodJets.Define("VBSJet_idx", "SelectVBSJets_invmass(Jet_pt, Jet_eta, Jet_phi, Jet_mass, GoodJets_idx)")
@@ -57,18 +57,18 @@ if __name__ == '__main__':
 
     # df_selection = df_tauDefinitions.Define("m_jjtaulep","GetInvMass(leadjet_pt, leadjet_eta, leadjet_phi, leadjet_mass, subleadjet_pt, subleadjet_eta, subleadjet_phi, subleadjet_mass, tau_pt, tau_eta, tau_phi, tau_mass, lepton_pt, lepton_eta, lepton_phi, lepton_mass)")
 
-    h = df.Histo1D(("m_jjtaulep", "" , 10, 0, 3000), "nJet") #df_selection m_jjtaulep
+    # h = df.Histo1D(("m_jjtaulep", "" , 10, 0, 3000), "nJet") #df_selection m_jjtaulep
 
-    h_varied = ROOT.RDF.Experimental.Distributed.VariationsFor(h)
+    # h_varied = ROOT.RDF.Experimental.Distributed.VariationsFor(h)
 
-    c = ROOT.TCanvas()
-    h_varied["dummyVariation:up"].SetLineColor(1)
-    h_varied["dummyVariation:up"].Draw()
-    h_varied["nominal"].SetLineColor(2)
-    h_varied["nominal"].Draw('SAME')
-    h_varied["dummyVariation:down"].SetLineColor(3)
-    h_varied["dummyVariation:down"].Draw('SAME')
-    c.Draw()
+    # c = ROOT.TCanvas()
+    # h_varied["dummyVariation:up"].SetLineColor(1)
+    # h_varied["dummyVariation:up"].Draw()
+    # h_varied["nominal"].SetLineColor(2)
+    # h_varied["nominal"].Draw('SAME')
+    # h_varied["dummyVariation:down"].SetLineColor(3)
+    # h_varied["dummyVariation:down"].Draw('SAME')
+    # c.Draw()
 
 
 ####################################################################################################
@@ -100,3 +100,78 @@ if __name__ == '__main__':
 #     print(type(computed_df))
 
 #     print(computed_df)
+
+if __name__ == '__main__':
+    import ROOT
+    import os
+    from dask.distributed import Client, LocalCluster, PipInstall, WorkerPlugin
+    import json
+    from samplesUL import *
+    import sys 
+    from dask_jobqueue import HTCondorCluster
+    from distributed.diagnostics.plugin import UploadFile
+
+    distributed = True
+    MT = False
+
+    maxNfilespersample = 1 #5 lower this number just for debugging purposes: 99999 prod.
+    nPartitions = 10*3  #used only in distributed mode (golden rule 3*Nworkers)
+
+    file = ROOT.TFile("/shared-scratch/cms/store/mc/RunIISummer20UL17NanoAODv9/ZGToLLG_01J_5f_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/70000/AF4D5462-30E8-EA43-AA8A-A1EADA9796BC.root")
+
+    # Access the TTree in the ROOT file
+    tree = file.Get("Events")
+
+    branchesss = tree.GetListOfBranches()
+    branchlist = []
+
+    # Edit to change number of branches read
+    branches_size = 1
+
+    for i, b in enumerate(branchesss):
+        #if b.GetName() == "Muon_mass":
+        #    branchlist.append(b.GetName())
+        #    break
+        if i <= branches_size:
+            branchlist.append(b.GetName())
+        else:
+            break
+            #continue
+
+    print(len(branchlist))
+    print(branchlist)
+
+    RDataFrame = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame
+    client = LocalCluster(threads_per_worker=1, n_workers=10).get_client()
+
+    chain = ["/shared-scratch/cms/store/mc/RunIISummer20UL17NanoAODv9/ZGToLLG_01J_5f_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/106X_mc2017_realistic_v9-v1/70000/AF4D5462-30E8-EA43-AA8A-A1EADA9796BC.root"]
+
+    def execute_MC(chain, branchlist_, outFilePath = "./preselectionUL.root", outTreeName = "Events",  nPart = nPartitions, useFlag_BadPFMuonDzFilter = True, LHE = True, label = "distrdf" ):
+        if distributed == True:
+            #df = RDataFrame("Events", chain, npartitions=nPart, daskclient=client, monitor_label = label)  #when using root version with monitoring features (/cvmfs/images.dodas.infn.it/registry.hub.docker.com/dodasts/root-in-docker:ubuntu22-kernel-v1-monitoring)
+            df = RDataFrame("Events", chain, npartitions=nPart, daskclient=client)  #when using standard root versions
+        
+        ### book snapshot ####
+        opts = ROOT.RDF.RSnapshotOptions()
+        opts.fLazy = True
+
+        if LHE == False:
+            branches = branchlist_[4:]
+        else:
+            branches = branchlist_
+        if distributed == True:
+            df_lazy = df.Snapshot(outTreeName, outFilePath, branches, opts)
+        
+        return df_lazy
+
+    df_sn = execute_MC(chain, branchlist, outFilePath = "./preselectionUL.root", outTreeName = "Events", label = "main") 
+
+    if distributed == True:
+        RunGraphs = ROOT.RDF.Experimental.Distributed.RunGraphs
+
+    proxies = [
+    df_sn
+    ]
+
+    RunGraphs(proxies)
+    dfs = [df_.GetValue() for df_ in proxies]
