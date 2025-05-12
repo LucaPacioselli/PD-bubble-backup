@@ -151,18 +151,19 @@ if __name__ == '__main__':
             #df = RDataFrame("Events", chain, npartitions=nPart, daskclient=client, monitor_label = label)  #when using root version with monitoring features (/cvmfs/images.dodas.infn.it/registry.hub.docker.com/dodasts/root-in-docker:ubuntu22-kernel-v1-monitoring)
             df = RDataFrame("Events", chain, npartitions=nPart, daskclient=client)  #when using standard root versions
         
+        df_new = df.Define("x", 27)
         ### book snapshot ####
-        opts = ROOT.RDF.RSnapshotOptions()
-        opts.fLazy = True
+        # opts = ROOT.RDF.RSnapshotOptions()
+        # opts.fLazy = True
 
-        if LHE == False:
-            branches = branchlist_[4:]
-        else:
-            branches = branchlist_
-        if distributed == True:
-            df_lazy = df.Snapshot(outTreeName, outFilePath, branches, opts)
+        # if LHE == False:
+        #     branches = branchlist_[4:]
+        # else:
+        #     branches = branchlist_
+        # if distributed == True:
+        #     df_lazy = df.Snapshot(outTreeName, outFilePath, branches, opts)
         
-        return df_lazy
+        return df_new
 
     df_sn = execute_MC(chain, branchlist, outFilePath = "./preselectionUL.root", outTreeName = "Events", label = "main") 
 
@@ -175,3 +176,5 @@ if __name__ == '__main__':
 
     RunGraphs(proxies)
     dfs = [df_.GetValue() for df_ in proxies]
+
+    print(dfs.head(5))
