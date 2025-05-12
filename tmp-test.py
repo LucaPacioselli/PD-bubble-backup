@@ -1,32 +1,32 @@
-# import ROOT
-# import os
-# from dask.distributed import Client, LocalCluster
+import ROOT
+import os
+from dask.distributed import Client, LocalCluster
 
-# nmaxpartitions = 30
+nmaxpartitions = 30
 
-# text_file = open("utils.h", "r")
-# data = text_file.read()
-
-
-# def my_initialization_function():
-#     ROOT.gInterpreter.Declare('{}'.format(data))
+text_file = open("utils.h", "r")
+data = text_file.read()
 
 
-# #client = Client(address="tcp://127.0.0.1:"+str(sched_port))
-# client = LocalCluster(n_workers=10, processes=False).get_client()
-# ROOT.RDF.Experimental.Distributed.initialize(my_initialization_function)
+def my_initialization_function():
+    ROOT.gInterpreter.Declare('{}'.format(data))
 
-# chain = [
-#          #"root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W1JetsToLNu.root",
-#          "root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W2JetsToLNu.root",
-#          "root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W3JetsToLNu.root",
-#         ]
 
-# df = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame("Events", chain, npartitions=nmaxpartitions, daskclient=client)   
+#client = Client(address="tcp://127.0.0.1:"+str(sched_port))
+client = LocalCluster(n_workers=10, processes=False).get_client()
+ROOT.RDF.Experimental.Distributed.initialize(my_initialization_function)
 
-# df_varied = df.Vary("Muon_pt", "ROOT::VecOps::RVec<ROOT::VecOps::RVec<float>>{Muon_pt*0.8, Muon_pt*1.2}", variationTags=["down", "up"], variationName="dummyVariation")
+chain = [
+         #"root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W1JetsToLNu.root",
+         "root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W2JetsToLNu.root",
+         #"root://eospublic.cern.ch//eos/root-eos/benchmark/CMSOpenDataHiggsTauTau/W3JetsToLNu.root",
+        ]
 
-# df_atleast2Jets = df_varied.Filter("nJet>=2", "At least two jets")
+df = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame("Events", chain, npartitions=nmaxpartitions, daskclient=client)   
+
+df_varied = df.Vary("Muon_pt", "ROOT::VecOps::RVec<ROOT::VecOps::RVec<float>>{Muon_pt*0.8, Muon_pt*1.2}", variationTags=["down", "up"], variationName="dummyVariation")
+
+df_atleast2Jets = df_varied.Filter("nJet>=2", "At least two jets")
 # df_GoodJets = df_atleast2Jets.Define("GoodJets_idx", "GoodJets(Jet_eta, Jet_pt, Jet_puId)")
 # df_atleast2GoodJets = df_GoodJets.Filter("atleast2GoodJets(GoodJets_idx)", "At least two good jets")
 # df_VBSjets = df_atleast2GoodJets.Define("VBSJet_idx", "SelectVBSJets_invmass(Jet_pt, Jet_eta, Jet_phi, Jet_mass, GoodJets_idx)")
@@ -56,43 +56,46 @@
 
 # df_selection = df_tauDefinitions.Define("m_jjtaulep","GetInvMass(leadjet_pt, leadjet_eta, leadjet_phi, leadjet_mass, subleadjet_pt, subleadjet_eta, subleadjet_phi, subleadjet_mass, tau_pt, tau_eta, tau_phi, tau_mass, lepton_pt, lepton_eta, lepton_phi, lepton_mass)")
 
-# h = df_selection.Histo1D(("m_jjtaulep", "" , 10, 0, 3000), "m_jjtaulep")
+h = df.Histo1D(("m_jjtaulep", "" , 10, 0, 3000), "nJet") #df_selection m_jjtaulep
 
-# h_varied = ROOT.RDF.Experimental.Distributed.VariationsFor(h)
+#h_varied = ROOT.RDF.Experimental.Distributed.VariationsFor(h)
 
-# c = ROOT.TCanvas()
+c = ROOT.TCanvas()
 # h_varied["dummyVariation:up"].SetLineColor(1)
 # h_varied["dummyVariation:up"].Draw()
-# h_varied["nominal"].SetLineColor(2)
-# h_varied["nominal"].Draw('SAME')
+h["nominal"].SetLineColor(2)
+h["nominal"].Draw('SAME')
 # h_varied["dummyVariation:down"].SetLineColor(3)
 # h_varied["dummyVariation:down"].Draw('SAME')
-# c.Draw()
+c.Draw()
 
-if __name__ == '__main__':
-    import requests
-    import json
-    from dask.distributed import Client, LocalCluster
-    import dask
 
-    # Start Dask cluster
-    #client = Client(LocalCluster(threads_per_worker=1, n_workers=4, memory_limit='2GB'))
+####################################################################################################
+# Questa analisi dummy funziona
+# if __name__ == '__main__':
+#     import requests
+#     import json
+#     from dask.distributed import Client, LocalCluster
+#     import dask
 
-    df = dask.datasets.timeseries()
-    print(df)
-    print(df.dtypes)
+#     # Start Dask cluster
+#     client = Client(LocalCluster(threads_per_worker=1, n_workers=4, memory_limit='2GB'))
 
-    # This sets some formatting parameters for displayed data.
-    import pandas as pd
+#     df = dask.datasets.timeseries()
+#     print(df)
+#     print(df.dtypes)
 
-    pd.options.display.precision = 2
-    pd.options.display.max_rows = 10
-    print(df.head(3))
+#     # This sets some formatting parameters for displayed data.
+#     import pandas as pd
 
-    df2 = df[df.y > 0]
-    df3 = df2.groupby("name").x.std()
+#     pd.options.display.precision = 2
+#     pd.options.display.max_rows = 10
+#     print(df.head(3))
 
-    computed_df = df3.compute()
-    print(type(computed_df))
+#     df2 = df[df.y > 0]
+#     df3 = df2.groupby("name").x.std()
 
-    print(computed_df)
+#     computed_df = df3.compute()
+#     print(type(computed_df))
+
+#     print(computed_df)
