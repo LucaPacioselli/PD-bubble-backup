@@ -73,29 +73,26 @@ if __name__ == '__main__':
     import requests
     import json
     from dask.distributed import Client, LocalCluster
-    import dask.bag as db
+    import dask
 
     # Start Dask cluster
     client = Client(LocalCluster(threads_per_worker=1, n_workers=4, memory_limit='2GB'))
 
-    # Fetch the index file manually
-    index_url = 'https://archive.analytics.mybinder.org/index.jsonl'
-    response = requests.get(index_url, verify=False)
-    lines = response.text.strip().split('\n')
-    records = [json.loads(line) for line in lines]
+    df = dask.datasets.timeseries()
+    print(df)
+    print(df.dtypes)
 
-    # Build filenames
-    filenames = ['https://archive.analytics.mybinder.org/' + rec['name'] for rec in records]
-    print(filenames[:5])
+    # This sets some formatting parameters for displayed data.
+    import pandas as pd
 
-    # Fetch each remote file and build a Dask bag from content
-    def fetch_and_parse(url):
-        r = requests.get(url, verify=False)
-        return [json.loads(line) for line in r.text.strip().split('\n')]
+    pd.options.display.precision = 2
+    pd.options.display.max_rows = 10
+    print(df.head(3))
 
-    # Create Dask bag from list of files
-    bag = db.from_sequence(filenames).map(fetch_and_parse).flatten()
+    df2 = df[df.y > 0]
+    df3 = df2.groupby("name").x.std()
 
-    # Dummy computation
-    print(bag.take(2))
-    print(bag.pluck('spec').frequencies(sort=True).take(20))
+    computed_df = df3.compute()
+    print(type(computed_df))
+
+    print(computed_df)
