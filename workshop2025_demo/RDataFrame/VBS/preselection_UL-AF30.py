@@ -16,10 +16,10 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-distributed = False
-MT = True
-redirector = ""
-#redirector = "root://t2-xrdcms.lnl.infn.it:7070/" # Legnaro - OK\
+distributed = True
+MT = False
+#redirector = ""
+redirector = "root://t2-xrdcms.lnl.infn.it:7070/" # Legnaro - OK\
 #redirector = "file:///shared-scratch/cms"
 #redirector = "file:///shared/home/cms"
 # Default in the txt chain files
