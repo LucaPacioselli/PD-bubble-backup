@@ -58,15 +58,15 @@ df_atleast2Jets = df_varied.Filter("nJet>=2", "At least two jets")
 
 h = df.Histo1D(("m_jjtaulep", "" , 10, 0, 3000), "nJet") #df_selection m_jjtaulep
 
-#h_varied = ROOT.RDF.Experimental.Distributed.VariationsFor(h)
+h_varied = ROOT.RDF.Experimental.Distributed.VariationsFor(h)
 
 c = ROOT.TCanvas()
-# h_varied["dummyVariation:up"].SetLineColor(1)
-# h_varied["dummyVariation:up"].Draw()
-h["nominal"].SetLineColor(2)
-h["nominal"].Draw('SAME')
-# h_varied["dummyVariation:down"].SetLineColor(3)
-# h_varied["dummyVariation:down"].Draw('SAME')
+h_varied["dummyVariation:up"].SetLineColor(1)
+h_varied["dummyVariation:up"].Draw()
+h_varied["nominal"].SetLineColor(2)
+h_varied["nominal"].Draw('SAME')
+h_varied["dummyVariation:down"].SetLineColor(3)
+h_varied["dummyVariation:down"].Draw('SAME')
 c.Draw()
 
 
