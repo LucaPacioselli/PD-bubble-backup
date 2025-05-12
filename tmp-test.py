@@ -2,8 +2,7 @@ import ROOT
 import os
 from dask.distributed import Client, LocalCluster
 
-nmaxpartitions = 50
-sched_port = 25136
+nmaxpartitions = 30
 
 text_file = open("utils.h", "r")
 data = text_file.read()
@@ -14,7 +13,7 @@ def my_initialization_function():
 
 
 #client = Client(address="tcp://127.0.0.1:"+str(sched_port))
-client = LocalCluster(n_workers=1, processes=False).get_client()
+client = LocalCluster(n_workers=10, processes=False).get_client()
 ROOT.RDF.Experimental.Distributed.initialize(my_initialization_function)
 
 chain = [
