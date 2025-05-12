@@ -106,7 +106,7 @@ if __name__ == '__main__':
     import os
     from dask.distributed import Client, LocalCluster, PipInstall, WorkerPlugin
     import json
-    from samplesUL import *
+    # from samplesUL import *
     import sys 
     from dask_jobqueue import HTCondorCluster
     from distributed.diagnostics.plugin import UploadFile
