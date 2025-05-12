@@ -168,13 +168,13 @@ if __name__ == '__main__':
     df_sn = execute_MC(chain, branchlist, outFilePath = "./preselectionUL.root", outTreeName = "Events", label = "main") 
 
     if distributed == True:
-        RunGraphs = ROOT.RDF.Experimental.Distributed.RunGraphs
+        RunGraphs = ROOT.RDF.Experimental.Distributed.RunGraphs(df_sn)
 
-    proxies = [
-    df_sn
-    ]
+    # proxies = [
+    # df_sn
+    # ]
 
-    RunGraphs(proxies)
-    dfs = [df_.GetValue() for df_ in proxies]
+    # RunGraphs(proxies)
+    # dfs = [df_.GetValue() for df_ in proxies]
 
-    print(dfs.head(5))
+    # print(dfs.head(5))
