@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/opt/workspace/persistent-storage/work/workshop2025_demo/RDataFrame/VBS/analysis-grand-challenge/analyses/cms-open-data-ttbar/analysis.py", line 509, in <module>
+    main()
+  File "/opt/workspace/persistent-storage/work/workshop2025_demo/RDataFrame/VBS/analysis-grand-challenge/analyses/cms-open-data-ttbar/analysis.py", line 467, in main
+    ROOT.Detail.RDF.RDFLogChannel().SetVerbosity(ROOT.Experimental.ELogLevel.kInfo)
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: <namespace cppyy.gbl.ROOT.Experimental at 0x55c698135e60> has no attribute 'ELogLevel'. Full details:
+  type object 'Experimental' has no attribute 'ELogLevel'
+  'ROOT::Experimental::ELogLevel' is not a known C++ class
+  'ELogLevel' is not a known C++ template
+  'ELogLevel' is not a known C++ enum

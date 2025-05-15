@@ -1,0 +1,41 @@
+Warning in <TClass::Init>: no dictionary for class edm::ProcessHistory is available
+Warning in <TClass::Init>: no dictionary for class edm::ProcessConfiguration is available
+Warning in <TClass::Init>: no dictionary for class edm::ParameterSetBlob is available
+Warning in <TClass::Init>: no dictionary for class edm::Hash<1> is available
+Warning in <TClass::Init>: no dictionary for class pair<edm::Hash<1>,edm::ParameterSetBlob> is available
+Warning in <TH1D::Rebin>: ngroup=2 is not an exact divider of nbins=25.
+Warning in <TH1D::Rebin>: ngroup=2 is not an exact divider of nbins=25.
+Warning in <TH1D::Rebin>: ngroup=2 is not an exact divider of nbins=25.
+Warning in <TH1D::Rebin>: ngroup=2 is not an exact divider of nbins=25.
+Warning in <TH1D::Rebin>: ngroup=2 is not an exact divider of nbins=25.
+Info in <TCanvas::Print>: png file reg1.png has been created
+Info in <TCanvas::Print>: png file reg2.png has been created
+Warning in <TH1D::Rebin>: ngroup=2 is not an exact divider of nbins=25.
+Warning in <TH1D::Rebin>: ngroup=2 is not an exact divider of nbins=25.
+Warning in <TH1D::Rebin>: ngroup=2 is not an exact divider of nbins=25.
+Warning in <TH1D::Rebin>: ngroup=2 is not an exact divider of nbins=25.
+Warning in <TH1D::Rebin>: ngroup=2 is not an exact divider of nbins=25.
+Info in <TCanvas::Print>: png file btag.png has been created
+Info in <TCanvas::Print>: png file jet.png has been created
+Number of threads: 8
+Booked histogram 4j1b_ttbar_nominal
+Booked histogram 4j2b_ttbar_nominal
+Booked histogram 4j1b_ttbar_scaledown
+Booked histogram 4j2b_ttbar_scaledown
+Booked histogram 4j1b_ttbar_scaleup
+Booked histogram 4j2b_ttbar_scaleup
+Booked histogram 4j1b_ttbar_ME_var
+Booked histogram 4j2b_ttbar_ME_var
+Booked histogram 4j1b_ttbar_PS_var
+Booked histogram 4j2b_ttbar_PS_var
+Booked histogram 4j1b_single_top_s_chan_nominal
+Booked histogram 4j2b_single_top_s_chan_nominal
+Booked histogram 4j1b_single_top_t_chan_nominal
+Booked histogram 4j2b_single_top_t_chan_nominal
+Booked histogram 4j1b_single_top_tW_nominal
+Booked histogram 4j2b_single_top_tW_nominal
+Booked histogram 4j1b_wjets_nominal
+Booked histogram 4j2b_wjets_nominal
+Building the computation graphs took 47.08 seconds
+Executing the computation graphs took 56.58 seconds
+Result histograms saved in file mt_af.root

@@ -1,0 +1,2 @@
+task_id,hostname,processed_entries,runtime_mapper,runtime_setup,runtime_rdf_creation,runtime_event_loop
+24,jupyter-lpaciose,45998,3.143799066543579,0.0005791187286376953,0.9685471057891846,2.174635171890259
